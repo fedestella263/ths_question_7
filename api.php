@@ -4,7 +4,7 @@
         $request = json_decode(file_get_contents('php://input'), true);
         $response = array("Status" => "OK");
         
-        if(!array_key_exists("values", $request) || !array_key_exists("operation", $request) || 
+        if(json_last_error() != JSON_ERROR_NONE || !array_key_exists("values", $request) || !is_array($request["values"]) || !array_key_exists("operation", $request) || 
             !array_key_exists(0, $request["values"]) || !array_key_exists(1, $request["values"]) ||
             !is_numeric($request["values"][0]) || !is_numeric($request["values"][1])) {
             
