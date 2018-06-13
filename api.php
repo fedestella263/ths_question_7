@@ -11,6 +11,11 @@
             $response["Status"] = "error";
             $response["Message"] = "invalid request";
             
+        } else if($request["values"][0] > PHP_INT_MAX || $request["values"][1] > PHP_INT_MAX) {
+            
+            $response["Status"] = "error";
+            $response["Message"] = "values out of range";
+            
         } else if($request["operation"] == "division" && $request["values"][1] == 0) {
             
             $response["Status"] = "error";
